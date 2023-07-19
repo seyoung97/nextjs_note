@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import styles from "./layout.module.css";
 
 export default function RootLayout({
@@ -8,8 +10,8 @@ export default function RootLayout({
   return (
     <>
       <nav className={styles.nav}>
-        <a href="">여성옷</a>
-        <a href="">남성옷</a>
+        <Link href="/products/women">여성옷</Link>
+        <a href="/products/man">남성옷</a>
       </nav>
       <section className={styles.product}>{children}</section>
     </>
