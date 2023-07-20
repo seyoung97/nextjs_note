@@ -1,10 +1,17 @@
 import { notFound } from "next/navigation";
+import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
   params: {
     slug: string;
   };
 };
+
+export function generateMetaData({ params }: Props) {
+  return {
+    title: `${params.slug}`,
+  };
+}
 
 export default function PantsPage({ params }: Props) {
   if (params.slug == "nothing") {
