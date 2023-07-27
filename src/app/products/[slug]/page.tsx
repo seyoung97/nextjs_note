@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import { getProduct, getProducts } from "@/service/products";
 
+export const revalidate = 3; // revalidate this page every 3 seconds
+
 type Props = {
   params: {
     slug: string;
