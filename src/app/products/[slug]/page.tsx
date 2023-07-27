@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
+import { getProduct, getProducts } from "@/service/products";
 
 type Props = {
   params: {
@@ -13,16 +14,20 @@ export function generateMetaData({ params }: Props) {
   };
 }
 
-export default function PantsPage({ params }: Props) {
-  if (params.slug == "nothing") {
+export default function PantsPage({ params: { slug } }: Props) {
+  // 서버 파일에 있는 데이터중 해당 제품의 정보를 찾아서 그걸 보여줌
+  const product = getProduct(slug);
+
+  if (!product) {
     notFound();
   }
-  return <h1>{params.slug} 소개 페이지!</h1>;
+  return <h1>{product} 소개 페이지!</h1>;
 }
 
 // 페이지 미리 생성하는 함수
 export function generateStaticParams() {
-  const products = ["pants", "skirt"];
+  // 모든 제품의 페이지들을 미리 만들어 둘 수 있게 해줄거임 (SSG)
+  const products = getProducts();
   return products.map((product) => ({
     slug: product,
   }));
