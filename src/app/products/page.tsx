@@ -14,7 +14,13 @@ export default async function ProductsPage() {
   return (
     <>
       <h1>제품 소개 페이지!</h1>
-      <Image src={clothesImage} alt="제품 소개 이미지" priority />
+      <Image
+        src={clothesImage}
+        alt="제품 소개 이미지"
+        priority
+        width={500}
+        height={400}
+      />
       <ul>
         {products.map((product) => {
           return (
