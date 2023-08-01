@@ -18,7 +18,17 @@ export default function Home() {
   return (
     <>
       <h1>홈페이지다!</h1>
+      <Image
+        src="https://plus.unsplash.com/premium_photo-1664202526559-e21e9c0fb46a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80"
+        alt="매장 이미지"
+        width={600}
+        height={400}
+      />
       <Counter />
     </>
   );
 }
+
+// Next에서 제공하는 Image 태그를 사용할 때 src를 url로 지정하기 위해서는
+// next.config에서 설정을 해줘야한다
+// 그리고 로컬 이미지를 사용할 떄와 달리 필수로 width 값과 height 값을 설정해줘야 한다
