@@ -30,6 +30,24 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    // 내부적으로 복잡하거나,
+    // 보안상으로 민감한 id, key가 들어 있는 url이 있다면
+    // url 자체를 외부에 공개하면 사용자가 볼 수 있기 때문에
+    // 다른 url로 대체, 덮어 씌울 수 있는 기능이 rewrites이다.
+    return [
+      {
+        source: "/joey",
+        // 대체 url, 밑의 url보다 간단함
+        destination: "/about/me/joey",
+        // 복잡한 실제 url
+      },
+      {
+        source: "/items/:slug",
+        destination: "/products/:slug",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
