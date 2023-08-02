@@ -1,7 +1,8 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import { getProduct, getProducts } from "@/service/products";
 import Image from "next/image";
+import GoProductsBtn from "@/components/GoProductsBtn";
 
 export const revalidate = 3; // revalidate this page every 3 seconds
 
@@ -23,7 +24,12 @@ export default async function ProductPage({ params: { slug } }: Props) {
   console.log(product?.image);
 
   if (!product) {
-    notFound();
+    redirect("/products");
+    // 동적으로 redirect하는 방법
+    // next/navigation의 redirect를 사용해서
+    // 해당되는 제품 아이디가 없다면 products page로 redirect
+
+    // notFound()
   }
   return (
     <>
@@ -34,6 +40,7 @@ export default async function ProductPage({ params: { slug } }: Props) {
         width={300}
         height={500}
       />
+      <GoProductsBtn />
     </>
   );
 }
