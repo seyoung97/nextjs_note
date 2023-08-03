@@ -12,11 +12,11 @@ type Props = {
   };
 };
 
-export function generateMetaData({ params }: Props) {
-  return {
-    title: `${params.slug}`,
-  };
-}
+// export function generateMetaData({ params }: Props) {
+//   return {
+//     title: `${params.slug}`,
+//   };
+// }
 
 export default async function ProductPage({ params: { slug } }: Props) {
   // 서버 파일에 있는 데이터중 해당 제품의 정보를 찾아서 그걸 보여줌
